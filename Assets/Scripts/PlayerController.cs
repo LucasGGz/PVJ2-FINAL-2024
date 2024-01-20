@@ -54,7 +54,7 @@ public class PlayerController : NetworkBehaviour
             anim.SetBool("corre", true);
             anim.SetBool("quieto", false);
             //  Debug.Log("En movimiento");
-            // Interpolar la rotación de manera suave
+            // Interpolar la rotaciï¿½n de manera suave
             Quaternion targetRotation = Quaternion.LookRotation(moveDir, Vector3.up);
             controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
@@ -65,7 +65,7 @@ public class PlayerController : NetworkBehaviour
             //Debug.Log("Quieto");
         }
 
-        // Aplicar la gravedad solo si no está en el suelo
+        // Aplicar la gravedad solo si no estï¿½ en el suelo
         if (!controller.isGrounded)
         {
             float gravedad = 9.8f;
@@ -74,19 +74,21 @@ public class PlayerController : NetworkBehaviour
         }
         else
         {
-            // Asegurarse de que la velocidad vertical sea negativa cuando está en el suelo
+            // Asegurarse de que la velocidad vertical sea negativa cuando estï¿½ en el suelo
             ySpeed = -0.5f;
 
-            // Manejar el salto mientras está en el suelo
+            // Manejar el salto mientras estï¿½ en el suelo
             if (Input.GetButtonDown("Jump"))
             {
-                //  anim.SetBool("salta", true);
+                anim.SetBool("Salta", true);
+                anim.SetBool("corre", false);
+                anim.SetBool("quieto", false);
                 ySpeed = jumpSpeed;
-                Debug.Log("salte PA");
+                //Debug.Log("salte PA");
             }
             else
             {
-                //anim.SetBool("salta", false);
+                anim.SetBool("Salta", false);
             }
         }
 
