@@ -588,6 +588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quantum Console
       objectReference: {fileID: 0}
+    - target: {fileID: 1263217620473054, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114689057623555238, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_Size
       value: 0.9694397
@@ -1444,7 +1448,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1370703872}
-    PlayerPrefab: {fileID: 6799417323998826232, guid: b1cf825d681236b43b9ab44a65b098ed, type: 3}
+    PlayerPrefab: {fileID: 932343555022423267, guid: 33a155d4fbd58454190ff371d6c2e8e6, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: a354da7f7e896264b97060facd9c50e8, type: 2}

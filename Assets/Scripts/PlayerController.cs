@@ -6,7 +6,6 @@ using UnityEngine;
 using Unity.Netcode;
 public class PlayerController : NetworkBehaviour
 {
-
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float jumpSpeed;
@@ -21,16 +20,19 @@ public class PlayerController : NetworkBehaviour
     private float vertical;
     private Vector3 playerInput;
     private Vector3 moveDir;
+    private Animator anim;
 
     [SerializeField] private Transform spawnObjectPrefab;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         if (!IsOwner) return;
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -49,6 +51,8 @@ public class PlayerController : NetworkBehaviour
         // Verificar si moveDir tiene una magnitud suficiente antes de usar LookRotation
         if (moveDir.magnitude > 0.1f)
         {
+            anim.SetBool("corre", true);
+            anim.SetBool("quieto", false);
             //  Debug.Log("En movimiento");
             // Interpolar la rotación de manera suave
             Quaternion targetRotation = Quaternion.LookRotation(moveDir, Vector3.up);
@@ -56,6 +60,8 @@ public class PlayerController : NetworkBehaviour
         }
         else
         {
+            anim.SetBool("corre", false);
+            anim.SetBool("quieto", true);
             //Debug.Log("Quieto");
         }
 
@@ -74,8 +80,13 @@ public class PlayerController : NetworkBehaviour
             // Manejar el salto mientras está en el suelo
             if (Input.GetButtonDown("Jump"))
             {
+                //  anim.SetBool("salta", true);
                 ySpeed = jumpSpeed;
                 Debug.Log("salte PA");
+            }
+            else
+            {
+                //anim.SetBool("salta", false);
             }
         }
 
